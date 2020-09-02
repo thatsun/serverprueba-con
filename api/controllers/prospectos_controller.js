@@ -107,13 +107,13 @@ exports.prospectos_get_by_userid=(req,res,next) =>{
 
 exports.prospectos_add_prospecto=(req,res,next) =>{   
     
-            console.log(req.file);
+            console.log(req.body.file);
     
             const prospecto= new Prospectos({
                 _id: new mongoose.Types.ObjectId(),
                 user: req.body.user,
                 name: req.body.name,
-                lastename: req.body.lastname,
+                lastname: req.body.lastname,
                 lastlastname: req.body.lastlastname,
                 adress_street: req.body.adress_street,
                 adress_number: req.body.adress_number,
