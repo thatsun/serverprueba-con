@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 
-const userRollSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     email: { type: String,
         require: true ,
@@ -12,4 +12,4 @@ const userRollSchema = mongoose.Schema({
     userroll: { type: String , require: true }
 });
 
-module.exports= mongoose.model('Userroll', userRollSchema);
+module.exports= mongoose.model('User', userRollSchema);
