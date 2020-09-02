@@ -107,7 +107,7 @@ exports.prospectos_get_by_userid=(req,res,next) =>{
 
 exports.prospectos_add_prospecto=(req,res,next) =>{   
     
-            console.log(req.body.file);
+            console.log(req.files);
     
             const prospecto= new Prospectos({
                 _id: new mongoose.Types.ObjectId(),

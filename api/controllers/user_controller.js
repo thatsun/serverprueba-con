@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt= require('jsonwebtoken');
 
-const User=require('../models/user');
+const User=require('../models/userroll');
 
 exports.user_singup=(req,res,next)=>{
 
@@ -25,11 +25,12 @@ exports.user_singup=(req,res,next)=>{
         
                 }   
                 else{
-                    const user= new User({
+                    const user= new Userroll({
                         _id: new mongoose.Types.ObjectId(),
                         email: req.body.email,
                         password: hash,
-                        username: req.body.username
+                        username: req.body.username,
+                        userroll: req.body.userroll
                 
                     });
                     user.save()
@@ -91,7 +92,8 @@ exports.user_login=(req,res,next)=>{
                     message: 'Auth succesful',
                     token: token,
                     userId: users[0]._id,
-                    username: users[0].username
+                    username: users[0].username,
+                    userroll: users[0].userroll
 
                 });
 
