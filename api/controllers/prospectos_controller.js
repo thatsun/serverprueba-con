@@ -107,18 +107,8 @@ exports.prospectos_get_by_userid=(req,res,next) =>{
 
 exports.prospectos_add_prospecto=(req,res,next) =>{   
     
-    console.log(req.file);
-    Prospectos.find({_id: req.body.id})
-    .exec()
-    .then(prospectoexist =>{
-        if(prospectoexist.length>=1){
-            return res.status(422).json({
-                 message: 'Prospecto Existe'
-
-            });
-
-        }
-        else{
+            console.log(req.file);
+    
             const prospecto= new Prospectos({
                 _id: new mongoose.Types.ObjectId(),
                 user: req.body.user,
@@ -150,14 +140,8 @@ exports.prospectos_add_prospecto=(req,res,next) =>{
                 });
 
             });
-        }
-    }).catch( err =>{
-        res.status(500).json({
-            error: err
-
-        });
-
-    });
+        
+    
 }
 
 exports.prospectos_get_prospecto=(req,res,next) =>{
