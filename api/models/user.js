@@ -12,4 +12,4 @@ const userSchema = mongoose.Schema({
     userroll: { type: String , require: true }
 });
 
-module.exports= mongoose.model('User', userRollSchema);
+module.exports= mongoose.model('User', userSchema);
