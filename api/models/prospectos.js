@@ -9,7 +9,7 @@ const prospectoSchema = mongoose.Schema({
     lastlastname: { type: String , require: false },
     adress_street:{type: String , require: true },
     adress_number:{type: String , require: true },
-    adrees_colony:{type: String , require: true },
+    adress_colony:{type: String , require: true },
     adress_cp:{type: String , require: true },
     phonenumber:{type: String , require: true },
     rfc:{type: String , require: true },
