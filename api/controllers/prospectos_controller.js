@@ -126,7 +126,7 @@ exports.prospectos_add_prospecto=(req,res,next) =>{
                 adress_cp: req.body.adress_cp,
                 phonenumber: req.body.phonenumber,
                 rfc: req.body.rfc,
-                documentsnames: req.body.documentsnames,
+                documentsnames: ["",""],
                 documentsrequest: req.files.map(file=>{ return file.destination + file.name }),
                 status:req.body.status,
                 reject_details:""
