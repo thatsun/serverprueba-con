@@ -24,7 +24,7 @@ exports.prospectos_change_status=(req,res,next)=>{
 }
 exports.prospectos_get_all=(req,res,next) =>{    
     Prospectos.find()
-    .select('user name lastname lastlastname adress_street adress_number adress_colony adress_cp phonenumber rfc documentsrequest status _id')
+    .select('user name lastname lastlastname adress_street adress_number adress_colony adress_cp phonenumber rfc documentsnames documentsrequest status _id')
     .exec()
     .then(docs=> {
         const response={           
@@ -40,8 +40,10 @@ exports.prospectos_get_all=(req,res,next) =>{
                     adress_cp: doc.adress_street,
                     phonenumber: doc.phonenumber,
                     rfc: doc.rfc,
+                    documentsnames:doc.documentsnames,
                     documentsrequest:doc.documentsrequest,                    
                     status: doc.status,
+                    reject_details: doc.reject_details,
                     Id: doc._id,
                     request: {
                         typerequest: 'GET',
@@ -66,7 +68,7 @@ exports.prospectos_get_all=(req,res,next) =>{
 exports.prospectos_get_by_userid=(req,res,next) =>{
     const userId= req.params.userId;
     Prospectos.find({user:userId})
-    .select('user name lastname lastlastname adress_street adress_number adress_colony adress_cp phonenumber rfc documentsrequest status _id')
+    .select('user name lastname lastlastname adress_street adress_number adress_colony adress_cp phonenumber rfc documentsnames documentsrequest status _id')
     .exec()
     .then(docs=> {
         const response={           
@@ -82,8 +84,10 @@ exports.prospectos_get_by_userid=(req,res,next) =>{
                     adress_cp: doc.adress_cp,
                     phonenumber: doc.phonenumber,
                     rfc: doc.rfc,
+                    documentsnames:doc.documentsnames,
                     documentsrequest:doc.documentsrequest,                    
                     status: doc.status,
+                    reject_details: doc.reject_details,
                     Id: doc._id,
                     request: {
                         typerequest: 'GET',
@@ -107,6 +111,7 @@ exports.prospectos_get_by_userid=(req,res,next) =>{
 
 exports.prospectos_add_prospecto=(req,res,next) =>{   
     
+            console.log("info");
             console.log(req.files);
     
             const prospecto= new Prospectos({
@@ -121,8 +126,10 @@ exports.prospectos_add_prospecto=(req,res,next) =>{
                 adress_cp: req.body.adress_cp,
                 phonenumber: req.body.phonenumber,
                 rfc: req.body.rfc,
-                documentsrequest: ["",""],
-                status:req.body.status
+                documentsnames: req.body.documentsnames,
+                documentsrequest: req.files.map(file=>{ return file.destination + file.name }),
+                status:req.body.status,
+                reject_details:""
         
             });
             prospecto.save()
@@ -166,8 +173,10 @@ exports.prospectos_get_prospecto=(req,res,next) =>{
                     adress_cp: doc.adress_cp,
                     phonenumber: doc.phonenumber,
                     rfc: doc.rfc,
+                    documentsnames: doc.documentsnames,
                     documentsrequest: doc.documentsrequest,
                     status:doc.status,
+                    reject_details:doc.reject_details,
                     request: {
                         typerequest: 'GET',
                         description: 'Get all prospectos',

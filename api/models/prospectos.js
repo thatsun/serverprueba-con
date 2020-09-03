@@ -13,8 +13,10 @@ const prospectoSchema = mongoose.Schema({
     adress_cp:{type: String , require: true },
     phonenumber:{type: String , require: true },
     rfc:{type: String , require: true },
+    documentsnames:{ type: [String] },
     documentsrequest:{ type: [String] },
-    status:{ type: String , require: true }
+    status:{ type: String , require: true },
+    reject_details:{type: String , require: true }
 });
 
 module.exports= mongoose.model('Prospecto', prospectoSchema);
