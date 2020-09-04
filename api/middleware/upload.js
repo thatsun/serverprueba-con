@@ -13,7 +13,7 @@ const storage = multer.diskStorage({
       return callback(message, null);
     }
 
-    var filename = `${Date.now()}-documento-${file.originalname}`;
+    var filename = `${Date.now()}doc${file.originalname}`;
     callback(null, filename);
   }
 });
