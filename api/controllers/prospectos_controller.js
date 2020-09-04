@@ -129,7 +129,7 @@ exports.prospectos_add_prospecto=(req,res,next) =>{
                 phonenumber: req.body.phonenumber,
                 rfc: req.body.rfc,
                 documentsnames: documentosnames,
-                documentsrequest: req.files.map((file)=>file.destination+file.filename),
+                documentsrequest: req.files.map((file)=>'/uploads/'+file.filename),
                 status:req.body.status,
                 reject_details:""
         
