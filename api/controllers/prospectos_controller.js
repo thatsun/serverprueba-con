@@ -24,7 +24,7 @@ exports.prospectos_change_status=(req,res,next)=>{
 }
 exports.prospectos_get_all=(req,res,next) =>{    
     Prospectos.find()
-    .select('user name lastname lastlastname adress_street adress_number adress_colony adress_cp phonenumber rfc documentsnames documentsrequest status _id')
+    .select('user name lastname lastlastname adress_street adress_number adress_colony adress_cp phonenumber rfc documentsnames documentsrequest status _id reject_details')
     .exec()
     .then(docs=> {
         const response={           
@@ -68,7 +68,7 @@ exports.prospectos_get_all=(req,res,next) =>{
 exports.prospectos_get_by_userid=(req,res,next) =>{
     const userId= req.params.userId;
     Prospectos.find({user:userId})
-    .select('user name lastname lastlastname adress_street adress_number adress_colony adress_cp phonenumber rfc documentsnames documentsrequest status _id')
+    .select('user name lastname lastlastname adress_street adress_number adress_colony adress_cp phonenumber rfc documentsnames documentsrequest status _id reject_details')
     .exec()
     .then(docs=> {
         const response={           
@@ -113,6 +113,8 @@ exports.prospectos_add_prospecto=(req,res,next) =>{
     
             console.log("info");
             console.log(req.files);
+
+            let documentosnames= req.body.documentosnames.split(".%.");
     
             const prospecto= new Prospectos({
                 _id: new mongoose.Types.ObjectId(),
@@ -126,8 +128,8 @@ exports.prospectos_add_prospecto=(req,res,next) =>{
                 adress_cp: req.body.adress_cp,
                 phonenumber: req.body.phonenumber,
                 rfc: req.body.rfc,
-                documentsnames: ["",""],
-                documentsrequest: ["",""],
+                documentsnames: documentosnames,
+                documentsrequest: req.files.map((file)=>file.destination+file.filename),
                 status:req.body.status,
                 reject_details:""
         
@@ -154,7 +156,7 @@ exports.prospectos_add_prospecto=(req,res,next) =>{
 exports.prospectos_get_prospecto=(req,res,next) =>{
     const Id= req.params.Id;
     Prospectos.findById(Id)
-        .select('user name lastname lastlastname adress_street adress_number adress_colony adress_cp phonenumber rfc documentsrequest status _id')
+        .select('user name lastname lastlastname adress_street adress_number adress_colony adress_cp phonenumber rfc documentsrequest  reject_details status _id')
         .exec()
         .then(doc =>{
             console.log("From database",doc);
