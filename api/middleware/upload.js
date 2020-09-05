@@ -6,7 +6,7 @@ const storage = multer.diskStorage({
     callback(null, './uploads/');
   },
   filename: (req, file, callback) => {
-    const match = ["image/png", "image/jpeg"];
+    const match = ["image/png", "image/jpeg","application/pdf"];
 
     if (match.indexOf(file.mimetype) === -1) {
       var message = `${file.originalname} is invalid. Only accept png/jpeg.`;
