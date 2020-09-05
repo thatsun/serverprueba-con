@@ -47,7 +47,7 @@ exports.prospectos_get_all=(req,res,next) =>{
                     Id: doc._id,
                     request: {
                         typerequest: 'GET',
-                        url: 'https://serverprueba.herokuapp.com/prospectos'
+                        url: 'https://serverprueba-con.herokuapp.com/prospectos'
                     }
 
                 }
@@ -91,7 +91,7 @@ exports.prospectos_get_by_userid=(req,res,next) =>{
                     Id: doc._id,
                     request: {
                         typerequest: 'GET',
-                        url: 'https://serverprueba.herokuapp.com/prospectos/'+doc._id
+                        url: 'https://serverprueba-con.herokuapp.com/prospectos/'+doc._id
                     }
 
                 }
@@ -129,7 +129,7 @@ exports.prospectos_add_prospecto=(req,res,next) =>{
                 phonenumber: req.body.phonenumber,
                 rfc: req.body.rfc,
                 documentsnames: documentosnames,
-                documentsrequest: req.files.map((file)=>'https://serverprueba.herokuapp.com/uploads/'+file.filename),
+                documentsrequest: req.files.map((file)=>'https://serverprueba-con.herokuapp.com/uploads/'+file.filename),
                 status:req.body.status,
                 reject_details:""
         
@@ -182,7 +182,7 @@ exports.prospectos_get_prospecto=(req,res,next) =>{
                     request: {
                         typerequest: 'GET',
                         description: 'Get all prospectos',
-                        url: 'https://serverprueba.herokuapp.com/prospectos'
+                        url: 'https://serverprueba-con.herokuapp.com/prospectos'
                     } 
                  }
                 });
@@ -216,7 +216,7 @@ exports.prospectos_edit_prospecto=(req,res,next) =>{
            
             request: {
                 typerequest: 'GET',
-                url: 'https://serverprueba.herokuapp.com/prospectos/'+Id
+                url: 'https://serverprueba-con.herokuapp.com/prospectos/'+Id
             } 
         }
         });
