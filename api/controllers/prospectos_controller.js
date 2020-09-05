@@ -4,7 +4,7 @@ const Prospectos= require('../models/prospectos');
 
 exports.prospectos_change_status=(req,res,next)=>{
 
-    Prospectos.updateOne({ _id: req.body.prosid }, { status: req.body.status})
+    Prospectos.updateOne({ _id: req.body.prosid }, { status: req.body.status, reject_details: req.body.reject_details })
     .exec()
     .then(result =>{
         
