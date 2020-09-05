@@ -19,10 +19,6 @@
     "save": "^2.4.0",
     "serve-favicon": "^2.5.0"
   },
-  "engines": {
-    "node": "0.10.11",
-    "npm": "1.2.25"
-  },
   "devDependencies": {
     "nodemon": "^2.0.4"
   }
