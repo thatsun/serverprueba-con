@@ -15,8 +15,7 @@ const prospectosRoutes= require('./api/routes/prospectos');
 const docsRoutes= require('./api/routes/documentation');
 
 
-
-app.use(express.static('/uploads',express.static(process.env.PWD+'/uploads')));
+app.use('/uploads', express.static('uploads'));
 app.use(express.static(__dirname +'/public'));
 app.use(favicon(path.join(__dirname, 'public','favicon.ico')));
 
