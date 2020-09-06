@@ -30,6 +30,7 @@ mongoose.connect('mongodb+srv://myapirestdemo_client:'+ process.env.MONGO_ATLAS_
 
 
 app.use(morgan('dev'));
+app.use('/uploads',express.static('uploads'));
 
 
 
