@@ -16,7 +16,7 @@ const docsRoutes= require('./api/routes/documentation');
 
 
 
-app.use(express.static(path.join(__dirname, "/uploads")));
+app.use('/uploads',express.static(path.join(__dirname, '/uploads')));
 app.use(express.static(path.join(__dirname, "/public")));
 app.use(favicon(path.join(__dirname, 'public','favicon.ico')));
 
