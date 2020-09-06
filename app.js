@@ -17,14 +17,16 @@ const docsRoutes= require('./api/routes/documentation');
 
 
 app.use(express.static('/uploads',express.static(process.env.PWD+'/uploads')));
-app.use(favicon(path.join(__dirname, 'public','favicon.ico')));
+app.use(express.static('/public',express.static(process.env.PWD+'/public')));
+app.use(favicon(path.join('/public', 'public','favicon.ico')));
 
 
 mongoose.connect('mongodb+srv://myapirestdemo_client:'+ process.env.MONGO_ATLAS_PW+'@myapirestdemo-drjj2.azure.mongodb.net/test?retryWrites=true&w=majority',{useNewUrlParser: true, useUnifiedTopology: true});
 
 
 app.use(morgan('dev'));
-app.use('/uploads',express.static('uploads'));
+
+
 
 
 
